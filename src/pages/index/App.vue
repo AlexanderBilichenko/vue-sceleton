@@ -6,8 +6,8 @@
 
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
-import LayoutMain from './layout/LayoutMain/index.vue'
-import LayoutAbout from './layout/LayoutAbout/index.vue'
+import LayoutMain from '@/layout/LayoutMain/index.vue'
+import LayoutAbout from '@/layout/LayoutAbout/index.vue'
 
 export default {
 

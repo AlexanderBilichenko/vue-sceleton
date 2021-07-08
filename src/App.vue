@@ -1,10 +1,30 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view/>
+  <component :is="'layout-' + layoutName" v-if="layoutName"></component>
 </template>
+
+<script lang="ts">
+
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+import LayoutMain from './layout/LayoutMain/index.vue'
+import LayoutAbout from './layout/LayoutAbout/index.vue'
+
+export default {
+
+  components: {
+    LayoutMain,
+    LayoutAbout
+  },
+
+  setup() {
+    const route = useRoute()
+
+    return {
+      layoutName: computed(() => route.meta.layout)
+    }
+  }
+}
+</script>
 
 <style lang="scss">
 #app {
@@ -15,16 +35,4 @@
   color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
 </style>
